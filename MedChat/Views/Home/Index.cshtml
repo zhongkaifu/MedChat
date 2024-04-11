@@ -1,0 +1,349 @@
+﻿@inject IConfiguration _config
+
+@{
+    ViewData["Title"] = @_config["Prompts:Title"];
+}
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {font-family: Arial;}
+
+/* Style the tab */
+.tab {
+  overflow: hidden;
+  border: 1px solid #ccc;
+  background-color: #f1f1f1;
+}
+
+/* Style the buttons inside the tab */
+.tab button {
+  background-color: inherit;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+  font-size: 17px;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+  background-color: #ddd;
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+  background-color: #ccc;
+}
+
+/* Style the tab content */
+.tabcontent {
+  display: none;
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-top: none;
+}
+
+ .user-message {
+        text-align: right;
+        color: blue;
+ }
+ 
+ .ai-message {
+            text-align: left;
+            color: darkgreen;
+        }
+
+</style>
+<body>
+
+    @if (bool.Parse(@ViewData["acceptAgreement"].ToString()) != true)
+    {
+            <form asp-controller="Home" asp-action="Agreement">
+            <h1 align="center"><b>@_config["Prompts:Title"] User Agreement 2024/01/10</b></h1>
+            <br />
+            <h5 align="center"><label>@_config["Prompts:Title"] is a chatbot that users act as a patient or a doctor to chat with AI based doctor or patient.</label></h5>
+            <h5 align="center"><label>It does not have any medical credentials and cannot provide any medical services.</label></h5>
+            <h5 align="center"><label>The chatbot is not evaluated, cleared and approved by FDA. It may produce inaccurate or erroneous outputs that do not reflect the current medical standards or best practices.</label></h5>
+            <h5 align="center"><label>Use this chatbot at your own risk.</label></h5>           
+            <h5 align="center"><label>It is not a substitute for professional medical advice, diagnosis, or treatment. You should not rely on the chatbot's outputs for making any medical decisions or taking any actions that may affect your health or well-being.</label></h5>
+            <h5 align="center"><label>Always consult a licensed physician or other qualified health provider for any questions you may have regarding a medical condition.</label></h5>
+            <h5 align="center"><label>Never disregard or delay seeking professional medical advice because of something you have read or heard from this chatbot.</label></h5>
+            <h5 align="center"><label>Any entity names, including but not limited to person's name, location name, and organization name, mentioned by the chatbot are fictional and bear no connection to real-world entities</label></h5>
+
+            <br />
+            <label>This Agreement ("Agreement") is entered into between the developer (referred to as "Developer") and users ("Users") for the use of the @_config["Prompts:Title"] developed by the Developer. This Agreement sets forth the terms and conditions governing the use of the @_config["Prompts:Title"].</label>
+                <br />
+                <br />
+                <label><b>Acknowledgment and Acceptance of Terms</b>
+                <br />
+                By accessing and using the @_config["Prompts:Title"], Users agrees to be bound by the terms and conditions set forth in this Agreement. If Users does not agree to these terms, they should not use the @_config["Prompts:Title"]. Users who are under the age of 18 must obtain permission from their legal guardian in order to complete the signing action and use this service.
+                </label>
+                <br />
+                <br />
+                <label>
+                <b>Acknowledgment and Assumption of Risk</b>
+                <br/>
+                Users acknowledge that the @_config["Prompts:Title"] is a software application developed by Developer and is not a licensed medical professional. Users understand and agree that they are using the @_config["Prompts:Title"] at their own risk. Users acknowledge the limitations and potential risks associated with using an AI-based services.
+                </label>
+                <br />
+                <br />
+                <label><b>Waiver of Liability</b>
+                    <br/>
+                User acknowledges and agrees that the @_config["Prompts:Title"] is an artificial intelligence program developed by the Developer for informational and educational purposes only. User expressly understands and agrees that the Developer shall not be liable for any direct, indirect, incidental, consequential, or exemplary damages arising out of or in connection with the use or performance of the @_config["Prompts:Title"]. Developer shall not be held responsible for any errors, inaccuracies, or omissions in the information provided by the @_config["Prompts:Title"]. Users acknowledge that when Users use the @_config["Prompts:Title"] to provide services to any third party, the corresponding rights, obligations, and responsibilities are borne by Users. The @_config["Prompts:Title"] is not responsible for any losses caused thereby.
+                </label>
+                <br />
+                <br />
+                <label><b>Waiver of Indemnity</b>        
+                    <br />
+                Users agrees to indemnify, defend, and hold harmless the Developer from and against any and all claims, liabilities, damages, losses, costs, expenses, or fees (including reasonable attorneys' fees) arising out of or in connection with Users's use of the @_config["Prompts:Title"].
+                </label>
+                <br />
+                <br />
+                <label><b>Promise Not to Sue</b>
+                    <br />
+                Users agrees not to bring any legal action, including a lawsuit or arbitration, against Developer for any claims, liabilities, or demands arising out of or in connection with the use of the @_config["Prompts:Title"].
+                </label>
+                <br />
+                <br />
+                <label><b>Assumption of Risk Agreement</b>
+                    <br />
+                Users acknowledge and assume the risks associated with using the @_config["Prompts:Title"], including but not limited to the potential inaccuracies in information or advice provided by the AI. The @_config["Prompts:Title"] is not evaluated, cleared and approved by FDA. Users understands that the @_config["Prompts:Title"] is not a substitute for professional medical advice, diagnosis, or treatment. Users agree to consult with a qualified healthcare professional for any medical concerns.
+                </label>
+                <br />
+                <br />
+                <label>
+                    <b>Privacy Agreement</b>
+                    <br />
+                    Users understand and agree that any protected health information (PHI) should not be provided to the @_config["Prompts:Title"]. Users should be aware that no online service is completely secure, and the User uses the @_config["Prompts:Title"] at their own risk. Users are solely responsible for the confidentiality and security of any information they choose to disclose during the use of the @_config["Prompts:Title"].
+                </label>
+                <br />
+                <br />
+
+                <label>
+                    <b>No Real-World Connection</b>
+                    <br />
+                Users understand and agree that any entity names, including but not limited to person's name, location name, and organization name, provided by the @_config["Prompts:Title"] are fictional and bear no connection to real-world entities, even if they share similar or same names.
+                </label>
+                <br />
+                <br />
+
+                <label>
+                    <b>Compliance with Local Laws</b>
+                    <br />
+                Users are responsible for ensuring their compliance with local laws and regulations regarding the use of the @_config["Prompts:Title"]. The Developer shall not be held liable for any legal consequences resulting from a User's failure to comply with applicable laws.
+                </label>
+                <br />
+                <br />
+
+@*                <label><b>Governing Law</b>
+                    <br />
+                    This Agreement shall be governed by and construed in accordance with the laws of Washington State in U.S..
+                </label>
+                <br />
+                <br />*@
+
+                <label><b>Severability</b>        
+                    <br />
+                    If any provision of this Agreement is found to be invalid or unenforceable, the remaining provisions shall continue to be valid and enforceable.
+                </label>
+                <br />
+                <br />
+
+            <label>
+                <b>Modification of Services</b>
+                <br />
+                Unless otherwise expressly provided, any changes to the @_config["Prompts:Title"] and the addition of new features, new products, and new services are unconditionally subject to this agreement.
+            </label>
+            <br />
+            <br />
+
+                <label>
+                    <b>Modification of Agreement</b>
+                    <br />
+                The Developer reserves the right to modify this Agreement without notification to Users. Users must accept the modified Agreement before continuing to use the @_config["Prompts:Title"].
+                </label>
+                <br/>
+                <br/>
+            <input type="checkbox" name="checkAgreement" /><label>&nbsp;<b>By using the @_config["Prompts:Title"], I have read, understood, and agreed to all terms and conditions outlined in this Agreement.</b></label>
+            &nbsp;&nbsp;
+            <input type="submit" id="btnAgreement" value="Accept"/>
+                    <hr/>
+
+                    <br/><br/>
+
+        </form>
+    }
+    else
+    {
+        <label hidden id="language">@_config["Language"]</label>
+
+        <label id="promptAIRole">@_config["Prompts:AIRole"]:</label>
+        <select id="ddlAIRole" onmousedown="this.value='';" onchange="selAIRole(this.value);">
+
+            @if (_config["Language"] == "zh")
+            {
+                <option value="doctor" selected="selected">健康咨询师</option>
+                <option value="patient">患者</option>
+            }
+            else
+            {
+                <option value="doctor" selected="selected">counselor</option>
+                <option value="patient">visitor</option> 
+            }
+        </select>
+        <br />
+        <br />
+        <p id="patientInfoGroup">
+            <label id="promptPatientInformation"><b>@_config["Prompts:PatientInfo"]:</b></label>
+            <br />
+            <table border="0">
+                <tr style="border:none">
+                    <th valign="middle" style="border:none">
+                <label id="promptGender">@_config["Prompts:PatientGender"]:</label>
+                <select id="ddlGender">
+                    @if (_config["Language"] == "zh")
+                    {
+                        <option value="1" selected="selected">男</option>
+                        <option value="2">女</option>
+                    }
+                    else
+                    {
+                        <option value="1" selected="selected">male</option>
+                        <option value="2">female</option>      
+                    }
+                </select>
+                </th>
+                    <th valign="middle" style="border:none">
+                <label id="promptAge">@_config["Prompts:PatientAge"]:</label> <input type="text" id="Age" name="Age" cols="3" rows="1" />
+                </th>
+                </tr>
+            </table>
+            <br />
+            <p hidden id="pVisitReason">
+            <label id="promptVisitReason">@_config["Prompts:VisitReason"]:</label> <input type="text" id="VisitReason" name="VisitReason" placeholder="left shoulder pain" cols="150" rows="1" style="width:100%" />
+            <br />
+            </p>
+            <br />
+        <input type="button" id="btnUpdateInfo" value=@_config["Prompts:Update"] onclick="UpdateInfo()" />
+        </p>
+        <hr/>
+        <p hidden id="chatGroup">
+            <label id="transcriptText"><b>Transcript</b></label>
+
+            <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a id="2BestTurn" style="color: grey" onclick="Click2BestTurn(this);"></a>
+            <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a id="3BestTurn" style="color: grey" onclick="Click3BestTurn(this);"></a>
+            <br>
+
+            @if (_config["Language"] == "zh")
+            {
+                <button type="button" title="不满意？重新生成最后一轮对话" id="regenerateTurn" onclick="RegenerateTurn()">&#x27F3;</button>
+            }
+            else
+            {
+                <button type="button" title="Regenerate The Last Turn" id="regenerateTurn" onclick="RegenerateTurn()">&#x27F3;</button>
+            }
+            <br />
+
+            <button type="button" title="ThumbUp" id="btnThumbUp" style="border:none;" onclick="ThumbUp()">👍</button>
+            <button type="button" title="ThumbDown" id="btnThumbDown" style="border:none;" onclick="ThumbDown()">👎</button>
+            <br/>
+
+            <img hidden id="dotdotdot" src="@Url.Content("~/images/dot.gif")" width="50" />
+            <br />
+            <label id="promptInputPatient">@_config["Prompts:TypeTurn"]</label>
+            <br />
+            <input type="text" id="inputTurn" name="inputTurn" cols="150" rows="1" style="width:100%" autofocus />
+            <br />
+            <input type="button" id="btnNextTurn" value=@_config["Prompts:Send"] onclick="SendTurn()" />
+        </p>
+        <hr />
+        if (bool.Parse(_config["SupportNoteDraft"]) == true)
+        {
+            <p id="noteGroup">
+                <label id="promptNoteGeneration"><b>Electronic Health Record Generation:</b></label>
+                <br />
+                <div class="tab">
+                    <button class="tablinks" onclick="openNoteTab(event, 'HPI')">HPI</button>
+                    <button class="tablinks" onclick="openNoteTab(event, 'PLAN')">Plan</button>
+                    <button class="tablinks" onclick="openNoteTab(event, 'EXAM')">Exam</button>
+                    <button class="tablinks" onclick="openNoteTab(event, 'RESULTS')">Results</button>
+                </div>
+
+                <div id="HPI" class="tabcontent">
+                    <label id="outputHPI"></label>
+                    <br />
+                    <input type="button" id="btnGenerateHPI" value="Generate" onclick="GenerateHPI()" />
+                </div>
+
+                <div id="PLAN" class="tabcontent">
+                    <label id="outputPLAN"></label>
+                    <br />
+                    <input type="button" id="btnGeneratePLAN" value="Generate" onclick="GeneratePLAN()" />
+                </div>
+
+                <div id="EXAM" class="tabcontent">
+                    <label id="outputEXAM"></label>
+                    <br />
+                    <input type="button" id="btnGenerateEXAM" value="Generate" onclick="GenerateEXAM()" />
+                </div>
+
+                <div id="RESULTS" class="tabcontent">
+                    <label id="outputRESULTS"></label>
+                    <br />
+                    <input type="button" id="btnGenerateRESULTS" value="Generate" onclick="GenerateRESULTS()" />
+                </div>
+           </p>
+        }
+
+            <p id="disclaimerGroup">
+
+            @if (_config["Language"] == "zh")
+            {
+                <label><h2><b>免责声明：</b></h2></label>
+                <br />
+                <label><b>* 聊天机器人没有任何医疗资质，无法提供任何医疗服务。 使用此聊天机器人的风险由您自行承担。</b></label>
+                <br />
+                <label><b>* 该聊天机器人未经 FDA 评估、批准和批准。 它可能会产生不准确或错误的输出，不反映当前的医疗标准或最佳实践。 它不能替代专业的医疗建议、诊断或治疗。 您不应依赖聊天机器人的输出来做出任何医疗决定或采取任何可能影响您的健康或福祉的行动。</b></label>
+                <br />
+                <label><b>* 如果您对健康状况有任何疑问，请务必咨询有执照的医生或其他合格的医疗服务提供者。</b></label>
+                <br />
+                <label><b>* 切勿因为您从该聊天机器人读到或听到的内容而忽视或延迟寻求专业医疗建议。</b></label>
+                <br />
+
+            }
+            else
+            {
+                <label><h2><b>Disclaimer: </b></h2></label>
+                <br />
+                <label><b>* The chatbot does not have any medical credentials and cannot provide any medical services. Use this chatbot at your own risk.</b></label>
+                <br />
+                <label><b>* The chatbot is not evaluated, cleared and approved by FDA. It may produce inaccurate or erroneous outputs that do not reflect the current medical standards or best practices. It is not a substitute for professional medical advice, diagnosis, or treatment. You should not rely on the chatbot's outputs for making any medical decisions or taking any actions that may affect your health or well-being.</b></label>
+                <br />
+                <label><b>* Always consult a licensed physician or other qualified health provider for any questions you may have regarding a medical condition.</b></label>
+                <br />
+                <label><b>* Never disregard or delay seeking professional medical advice because of something you have read or heard from this chatbot.</b></label>
+                <br />
+            }
+            </p>
+        
+
+        <script src="~/js/site.js"></script>
+        <script>
+
+            const txtTurnEl = document.getElementById('inputTurn');
+            const btnTurnEl = document.getElementById('btnNextTurn');
+            txtTurnEl.addEventListener('keydown', (event) => {
+              if (event.keyCode == 13) {
+                btnTurnEl.click();
+                txtTurnEl.value="";
+              }
+            });          
+        </script>
+    }
+
+</body>

@@ -1,0 +1,11 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/MedChat/bin
+/MedChat/obj
+/MedChat/cuda_cache/general
+/.vs
+/MedChat/Properties/serviceDependencies.local.json.user
+/MedChat/Properties/PublishProfiles/FolderProfile1.pubxml.user
+/MedChat/Properties/PublishProfiles/FolderProfile.pubxml.user
